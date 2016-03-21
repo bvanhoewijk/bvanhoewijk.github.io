@@ -1,0 +1,45 @@
+---
+layout: post
+title:  "Welcome to Jekyll3!"
+date:   2016-03-22 19:45:00 +0100
+categories: jekyll update
+---
+This post contains some test code to check how jekyll renders code pieces.
+
+{% highlight bash %}
+# Build ref:
+bowtie2-build reference.fasta reference
+# Align stuff:
+bowtie2 -x reference -1 foobar1.fq -2 foobar2.fq > out.sam
+# View sort index
+samtools view -bS out.sam > out.bam
+samtools index out.bam
+samtools sort out.sorted.bam
+{% endhighlight %}
+
+Perl example:
+{% highlight perl %}
+#!/usr/bin/perl
+use warnings;
+use strict;
+
+open(my $fh, "<", "file.txt") or die("Can't open file!");
+while(<$fh>){
+    print $_;
+}
+close($fh);
+{% endhighlight %}
+
+R example:
+{% highlight R %}
+dataset <- read.table(file="dataset.txt", header=T, sep="\t")
+summary(dataset)
+plot(dataset)
+{% endhighlight %}
+
+
+Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+
+[jekyll-docs]: http://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
