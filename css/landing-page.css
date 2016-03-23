@@ -36,7 +36,9 @@ h6 {
     text-align: center;
     /*height: 500px;*/
     color: #f8f8f8;
+    /*background: url(../img/intro-bg.jpg) no-repeat center center;*/
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/dna.jpg) no-repeat center center;
+    /*background: linear-gradient(to right, rgba(107,112,186,0.15) 0%,rgba(107,112,186,0.15) 100%), url(../img/dna.jpg) no-repeat center center;; */
     background-size: cover;
 }
 
@@ -44,6 +46,10 @@ h6 {
     position: relative;
     padding-top: 20%;
     padding-bottom: 20%;
+}
+
+.intro-message > h3{
+    color: mediumseagreen;
 }
 
 .intro-message > h1 {
