@@ -26,6 +26,12 @@
     <!-- Custom CSS -->
     <link href="{{ site.baseurl }}/css/syntax.css" rel="stylesheet">
     <link href="{{ site.baseurl }}/css/landing-page.css" rel="stylesheet">
+    {% if page.url == "/" %}
+    <link href="{{ site.baseurl }}/css/navbar_main.css" rel="stylesheet">
+    {% else %}
+    <link href="{{ site.baseurl }}/css/navbar_blog.css" rel="stylesheet">
+    {% endif %}
+
 
     <!-- Custom Fonts -->
     <link href="{{ site.baseurl }}/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
