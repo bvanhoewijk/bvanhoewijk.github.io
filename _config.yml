@@ -8,12 +8,11 @@
 # Site settings
 title: Bas van Hoewijk
 email: basvanhoewijk@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  TODO: Write description
+description: The personal website of Bas containing random insanity, geek and tech stuffs
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://yourdomain.com" # the base hostname & protocol for your site
+url: "http://bvanhoewijk.github.io" # the base hostname & protocol for your site
 twitter_username:
-github_username:
+github_username: bvanhoewijk
 
 # Build settings
 markdown: kramdown
