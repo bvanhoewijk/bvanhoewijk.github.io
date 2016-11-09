@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<html lang="en">
+{% include head.html %}
+
+<body>
+{% include nav.html %}
+<br>
+<br>
+<br>
+  <div class="container">
+    <div class="table-responsive">
+      <table class="table">
+        {% include goodreadsreviews.html %}
+      </table>
+    </div>
+  </div>
+</div>
+
+{% include footer.html %}
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+</body>
+</html>
