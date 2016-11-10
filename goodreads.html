@@ -9,12 +9,11 @@ layout: default
 <br>
 <br>
 <br>
-  <div class="container">
-    <div class="table-responsive">
-      <table class="table">
-        {% include goodreadsreviews.html %}
-      </table>
-    </div>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      {% include goodreadsreviews.html %}
+    </table>
   </div>
 </div>
 
@@ -22,6 +21,13 @@ layout: default
 <script>
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
+});
+// http://jsfiddle.net/Sherbrow/68RXP/
+$('.row .foo').on('click', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    var $collapse = $this.closest('.collapse-group').find('.collapse');
+    $collapse.collapse('toggle');
 });
 </script>
 </body>

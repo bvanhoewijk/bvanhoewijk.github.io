@@ -20,32 +20,48 @@ def strip_tags(html):
     return s.get_data()
   
 def cleantext(data):
-  if data != None:
-    return data.encode('utf-8').strip()
-  return data
+    if data != None:
+        return data.encode('utf-8').strip()
+    return data
 
-print '<table>'
-print '<tr><th /><th>Title</th><th>Author</th><th>Rating</th></tr>'
+def getStars(rating):
+    stars = ""
+    if int(rating) == 0:
+        stars = "N/A"
+    else:
+        for i in range(0, int(rating)):
+            stars += "<span class=\"glyphicon glyphicon-star\" aria-hidden=\"true\"></span>"
+    return stars
+
+print '<thead><tr><th /><th>Title</th><th>Author</th><th>Rating</th></tr></thead><tbody>'
+
+bookindex = 0
 for item in root.iter('item'):
-  title = cleantext(item.find('title').text)
-  author = cleantext(item.find('author_name').text)
-  rating = cleantext(item.find('user_rating').text)
-  img = cleantext(item.find('book_small_image_url').text)
-  user_review = cleantext(item.find('user_review').text)
-  book_description = cleantext(item.find('book_description').text)
+    bookindex = bookindex + 1
+    title = cleantext(item.find('title').text)
+    author = cleantext(item.find('author_name').text)
+    rating = cleantext(item.find('user_rating').text)
+    img = cleantext(item.find('book_small_image_url').text)
+    user_review = cleantext(item.find('user_review').text)
+    book_description = cleantext(item.find('book_description').text)
 
-  book_description = strip_tags(book_description)
-  if user_review != None: 
-    user_review = strip_tags(user_review)
+    book_description = strip_tags(book_description)
+    if user_review != None: 
+        user_review = strip_tags(user_review)
+    else:
+        user_review = str(rating) + " stars"
 
-  print "<tr>"
-  print "<td><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"down\" title=\"%s\"><img src=\"%s\"/></td>" % (book_description, img)
-  print "<td><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"down\" title=\"%s\">%s</td>" % (book_description, title)
-  print "<td>%s</td>" % author
-      # <li><a href="#" data-toggle="tooltip" data-placement="top" title="Hooray!">Top</a></li>
-  print "<td><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"%s\">%s</td>" % (user_review, rating)
-  print "</tr>"
+    print '<tr class="accordion-toggle" data-toggle="collapse" data-target="#%s">' % ("book" + str(bookindex))
+    print "<td><img src=\"%s\"/></td>" % img
+    print "<td>%s</td>" % title
+    print "</td>"
+    print "<td>%s</td>" % author
+    print "<td><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"%s\">" % user_review
 
+    print getStars(rating)
 
-print '</table>'
+    print "</td></tr>"
+    print '<tr><td class="zeroPadding" colspan="4"><div id="%s" class="collapse">%s</div></tr>' % ("book" + str(bookindex), book_description)    
+
+print '</tbody>'
 

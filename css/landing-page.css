@@ -12,6 +12,9 @@ html {
     padding: 0;
 }
 
+.zeroPadding {
+  padding: 0 !important;
+}
 
 
 .icon-bar {
