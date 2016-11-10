@@ -16,6 +16,10 @@ html {
   padding: 0 !important;
 }
 
+.table-responsive
+{
+    overflow-x: auto;
+}
 
 .icon-bar {
     background-color: #fff;
