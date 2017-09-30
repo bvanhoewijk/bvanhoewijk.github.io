@@ -21,7 +21,7 @@ def strip_tags(html):
 def cleantext(data):
     if data != None:
         return data.encode('utf-8').strip()
-    return data
+    return ""
 
 def getStars(rating):
     stars = ""
@@ -62,7 +62,7 @@ def main():
         print '<td><a href="#" data-toggle="tooltip" data-placement="top" title="%s">' % user_review
         print getStars(rating)
         print '</td></tr>'
-        print '<tr><td class="zeroPadding" colspan="4"><div id="%s" class="collapse">%s</div></tr>' % ("book" + str(bookindex), book_description)    
+        print '<tr><td class="zeroPadding" colspan="5"><div id="%s" class="collapse">%s</div></tr>' % ("book" + str(bookindex), book_description)    
 
     print '</tbody>'
 
