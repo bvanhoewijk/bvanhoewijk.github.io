@@ -26,7 +26,7 @@ def strip_tags(html):
 
 def cleantext(data):
     if data != None:
-        return str(data.encode("utf-8").strip())
+        return data.strip()
     return ""
 
 
@@ -47,42 +47,45 @@ def main():
     # print(
     #     "<thead><tr><th /><th>Title</th><th>Author</th><th>My rating</th></tr></thead><tbody>"
     # )
-
+    reviewsfh = open("_includes/goodreadsreviews.html", "w")
     bookindex = 0
     for item in root.iter("item"):
         bookindex = bookindex + 1
         title = cleantext(item.find("title").text)
         author = cleantext(item.find("author_name").text)
-        rating = int(strip_tags(cleantext(item.find("user_rating").text)[2]))
+        rating = int(strip_tags(cleantext(item.find("user_rating").text)))
+        # rating = 5
         img = cleantext(item.find("book_small_image_url").text)
         user_review = cleantext(item.find("user_review").text)
         book_description = cleantext(item.find("book_description").text)
-
         book_description = strip_tags(book_description)
+        book_description = (book_description.encode('ascii', 'ignore')).decode("utf-8")
+
         if user_review != None:
             user_review = strip_tags(user_review)
         else:
             user_review = str(rating) + " stars"
 
-        print(
+        reviewsfh.write(
             '<tr class="accordion-toggle" data-toggle="collapse" data-target="#%s">'
             % ("book" + str(bookindex))
         )
-        print('<td><img src="%s"/></td>' % img)
-        print("<td>%s</td>" % title)
-        print("<td>%s</td>" % author)
-        print(
+        reviewsfh.write('<td><img src="%s"/></td>' % img)
+        reviewsfh.write("<td>%s</td>" % title)
+        reviewsfh.write("<td>%s</td>" % author)
+        reviewsfh.write(
             '<td><a href="#" data-toggle="tooltip" data-placement="top" title="%s">'
             % user_review
         )
-        print(getStars(rating))
-        print("</td></tr>")
-        print(
+        reviewsfh.write(getStars(rating))
+        reviewsfh.write("</td></tr>")
+        
+        reviewsfh.write(
             '<tr><td class="zeroPadding" colspan="5"><div id="%s" class="collapse">%s</div></tr>'
             % ("book" + str(bookindex), book_description)
         )
 
-    print("</tbody>")
+    reviewsfh.write("</tbody>")
 
 
 if __name__ == "__main__":
